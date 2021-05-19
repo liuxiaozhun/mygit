@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            background-color: aliceblue;
+        }
+
+        #zhuce {
+
+            width: 400px;
+            height: 410px;
+            border: solid 1px chartreuse;
+            border-radius: 5px;
+            background-color: bisque;
+            margin: 100px auto;
+
+        }
+    </style>
+    <script type="text/javascript">
+        function del(ob) {
+            var a = ob.value;
+            var sp1 = document.getElementById("sp1").value;
+            if (sp1 == "账号不可用") {
+                ob.value = "";
+            }
+        }
+
+        function sk(p) {
+            var a = p.value;
+            var sp1 = document.getElementById("sp1");
+            if (a == "") {
+                sp1.innerHTML = "账号不能为空";
+            } else {
+                var reg = /^\d{10}$/;
+                var ret = reg.test(a);
+                if (ret) {
+                    sp1.innerHTML = "账号可用";
+                } else {
+                    sp1.innerHTML = "账号不可用";
+
+                }
+            }
+        }
+
+        function sk1(p1) {
+            var a = p1.value;
+            var sp1 = document.getElementById("sp2");
+            if (a == "") {
+                sp1.innerHTML = "密码不能为空";
+            } else {
+                var reg = /^[A-Z][a-zA-Z0-9]{5,13}$/;
+                var ret = reg.test(a);
+                if (ret) {
+                    sp1.innerHTML = "密码可用";
+                } else {
+                    sp1.innerHTML = "密码不可用";
+                }
+            }
+        }
+
+        function sk2(p2) {
+            var a = p2.value;
+            var b = document.getElementById("ps").value;
+            var c = document.getElementById("sp3");
+            if (a == "") {
+                c.innerHTML = "";
+            } else {
+                if (a == b) {
+                    c.innerHTML = "输入正确";
+                } else {
+                    c.innerHTML = "输入有误";
+                }
+            }
+        }
+
+        function sh() {
+            var a1 = document.getElementById("s1");
+            var a2 = document.getElementById("s2");
+            var a3 = document.getElementById("s3");
+            var a = document.getElementById("sheng").value;
+            if (a == "湖南省") {
+                a1.innerHTML = "长沙";
+                a2.innerHTML = "岳阳";
+                a3.innerHTML = "株洲";
+            }
+            if (a == "湖北省") {
+                a1.innerHTML = "武汉";
+                a2.innerHTML = "黄冈";
+                a3.innerHTML = "荆州";
+            }
+            if (a == "江西省") {
+                a1.innerHTML = "南昌";
+                a2.innerHTML = "南康";
+                a3.innerHTML = "九江";
+
+            }
+        }
+
+        function ch(obj) {
+            var us = document.getElementById("us").value;
+            var ps = document.getElementById("ps").value;
+            obj.href = "../index.html?user=" + us + "&pass=" + ps;
+            "products-details.html?name=汽车发动机&price=￥663.3"
+        }
+    </script>
+</head>
+<body>
+<form action="lge">
+    <div id="zhuce">
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号</h4>*<input name="na" id="us" onclick="del(this)" onblur="sk(this)"
+                                                         placeholder="账号由十位数字组成"/><span
+            id="sp1"></span>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码</h4>*<input name="ps" type="password" id="ps" onclick="del(this)" onblur="sk1(this)"
+                                                         placeholder="密码首位为大写英文字母"/><span
+            id="sp2" style="font-size: 12px;">长度不能小于6大于14由字母数字组成</span>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确认密码</h4> *<input type="password" onblur="sk2(this)"
+                                                            placeholder="再次输入密码"/><span id="sp3"></span>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区</h4>&nbsp;&nbsp;
+        <select onchange="sh()" id="sheng">
+            <option>[省]</option>
+            <option>湖南省</option>
+            <option>湖北省</option>
+            <option>江西省</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select style="width: 60px;">
+            <option>[市]</option>
+            <option id="s1"></option>
+            <option id="s2"></option>
+            <option id="s3"></option>
+        </select>
+        <br>
+        <input style="margin-left: 20px; margin-top: 20px; width: 100px; font-size: 30px;" type="submit" value="立即注册"/>
+        <a href="../index.html"><input style="margin-left: 150px; width: 100px; font-size: 30px;" type="button"value="取消注册"/></a>
+    </div>
+</form>
+</body>
+</html>
